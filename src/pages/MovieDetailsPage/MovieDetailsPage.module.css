@@ -1,8 +1,36 @@
+.container {
+  padding: 10px;
+}
+
 .main_info {
   display: flex;
-  padding: 10px;
   gap: 20px;
   .img_wrap {
-    width: 300px;
+    min-width: 250px;
+    width: 280px;
+    height: 350px;
+    overflow: hidden;
+    img {
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+    }
+  }
+  .descript {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  .genres {
+    display: flex;
+    gap: 5px;
+    li {
+      background-color: grey;
+      border-radius: 5px;
+      color: white;
+      padding: 5px 10px;
+      font-weight: bold;
+      text-transform: lowercase;
+    }
   }
 }

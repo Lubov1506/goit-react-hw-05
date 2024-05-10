@@ -1,24 +1,30 @@
 import MoviesList from "components/MoviesList/MoviesList";
+import { useHttp } from "../../hooks/useHttp";
 import { useSearchParams } from "react-router-dom";
-
+import { fetchMovieByQuery } from "service/moviesAPI";
+import Container from "components/Container/Container";
+import s from "./MoviesPage.module.css";
+import { Field, Form, Formik } from "formik";
 const MoviesPage = () => {
-
   const [searchParams, setSearchParams] = useSearchParams();
-  console.log(searchParams);
-  const query = searchParams.get('name') ?? ''
-  console.log(query);
+  const query = searchParams.get("query") ?? "";
+  const [searchMovies] = useHttp(fetchMovieByQuery, query);
   return (
-    <div>
-      <input
-        name="query"
-        value={query}
-        onChange={(e) =>
-          setSearchParams(e.target.value ? { name: e.target.value } : {})
-        }
-      />
+    <Container>
+      <Formik
+        initialValues={{ searchStr: query }}
+        onSubmit={(values) => {
+          setSearchParams({ query: values.searchStr, page:1 });
+        }}
+      >
+        <Form>
+          <Field className={s.input} name="searchStr" />
+          <button type="submit">Search</button>
+        </Form>
+      </Formik>
 
-      <MoviesList />
-    </div>
+      <div>{searchMovies && <MoviesList movies={searchMovies} />}</div>
+    </Container>
   );
 };
 

@@ -1,0 +1,12 @@
+.button {
+  background-color: rgba(128, 128, 128, 0.823);
+  color: white;
+  border-radius: 5px;
+  padding: 5px;
+  font-weight: bold;
+  transition: background-color 400ms cubic-bezier(0.165, 0.84, 0.44, 1);
+  &:hover,
+  &:focus {
+    background-color: green;
+  }
+}

@@ -23,5 +23,5 @@ export const fetchMovieByQuery = async (query) => {
     },
   });
   console.log(data);
-  return transformMoviesData([data])[0];
+  return transformMoviesData(data.results);
 };

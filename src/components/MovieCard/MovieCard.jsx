@@ -7,7 +7,7 @@ const MovieCard = ({ item }) => {
   const location = useLocation();
   return (
     <li className={s.card}>
-      <Link to={`/movie/${item.id}`} state={location}>
+      <Link to={`/movies/${item.id}`} state={location}>
         <div className={s.img_wrap}>
           <img src={item.poster} alt="" />
         </div>
