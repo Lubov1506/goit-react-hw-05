@@ -1,0 +1,8 @@
+.main_info {
+  display: flex;
+  padding: 10px;
+  gap: 20px;
+  .img_wrap {
+    width: 300px;
+  }
+}

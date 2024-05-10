@@ -2,15 +2,26 @@ import axios from "axios";
 import { transformMoviesData } from "helpers/transformMoviesData";
 
 const instance = axios.create({
-  baseURL: "https://api.themoviedb.org/3/trending/",
+  baseURL: "https://api.themoviedb.org/3/",
 });
-const options = {
-  headers: {
-    Authorization:
-      "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI0ZGI1MjhjZGRmNGExYzc1NTU3YzFiMGI1NTRmNWVhNSIsInN1YiI6IjY2M2RiYzI0MzA0MmYzNWJlM2ZiMTMwNyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.wwUvIt_qmoKfzSPjtQMoX2Vt4pVr0vcSwnfFIT_Fz1Y",
-  },
-};
+instance.defaults.headers.Authorization =
+  "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI0ZGI1MjhjZGRmNGExYzc1NTU3YzFiMGI1NTRmNWVhNSIsInN1YiI6IjY2M2RiYzI0MzA0MmYzNWJlM2ZiMTMwNyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.wwUvIt_qmoKfzSPjtQMoX2Vt4pVr0vcSwnfFIT_Fz1Y";
+
 export const fetchMovies = async () => {
-  const { data } = await instance.get("movie/day", options);
+  const { data } = await instance.get("trending/movie/day");
   return transformMoviesData(data.results);
+};
+export const fetchMovieById = async (movieId) => {
+  const { data } = await instance.get(`movie/${movieId}`);
+  console.log(data);
+  return transformMoviesData([data])[0];
+};
+export const fetchMovieByQuery = async (query) => {
+  const { data } = await instance.get(`search/movie`, {
+    params: {
+      query,
+    },
+  });
+  console.log(data);
+  return transformMoviesData([data])[0];
 };
