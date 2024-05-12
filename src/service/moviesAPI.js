@@ -33,6 +33,5 @@ export const fetchMovieReviews = async (movieId) => {
   const {
     data: { results },
   } = await instance.get(`movie/${movieId}/reviews`);
-  console.log(results);
   return results;
 };
