@@ -1,5 +1,8 @@
 .container {
   padding: 10px;
+  gap: 20px;
+  display: flex;
+  flex-direction: column;
 }
 
 .main_info {
@@ -33,4 +36,14 @@
       text-transform: lowercase;
     }
   }
+}
+.nav_list {
+  display: flex;
+  gap: 10px;
+  font-weight: bold;
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+.movieLink {
+  color: green;
 }

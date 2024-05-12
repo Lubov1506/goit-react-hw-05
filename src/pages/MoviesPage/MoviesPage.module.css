@@ -1,7 +1,15 @@
+.form {
+  display: flex;
+  gap: 20px;
+  min-width: 200px;
+  button {
+    padding: 10px 20px;
+  }
+  margin-bottom: 20px;
+}
 .input {
   padding: 10px 20px;
-  min-width: 200px;
-  margin: 20px auto;
+
   outline: none;
   border-radius: 10px;
   border: 2px solid rgba(0, 128, 0, 0.306);

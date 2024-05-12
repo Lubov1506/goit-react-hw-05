@@ -1,10 +1,11 @@
-import MoviesList from "components/MoviesList/MoviesList";
+import MoviesList from "components/MovieList/MovieList";
 import { useHttp } from "../../hooks/useHttp";
 import { useSearchParams } from "react-router-dom";
 import { fetchMovieByQuery } from "service/moviesAPI";
 import Container from "components/Container/Container";
 import s from "./MoviesPage.module.css";
 import { Field, Form, Formik } from "formik";
+import Button from "components/Button/Button";
 const MoviesPage = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const query = searchParams.get("query") ?? "";
@@ -17,9 +18,9 @@ const MoviesPage = () => {
           setSearchParams({ query: values.searchStr, page:1 });
         }}
       >
-        <Form>
+        <Form className={s.form}>
           <Field className={s.input} name="searchStr" />
-          <button type="submit">Search</button>
+          <Button type="submit">Search</Button>
         </Form>
       </Formik>
 

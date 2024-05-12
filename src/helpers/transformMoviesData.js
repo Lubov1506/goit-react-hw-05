@@ -1,7 +1,6 @@
 import { createImgURL } from "./createImgURL";
 
 export const transformMoviesData = (data) => {
-  console.log(data);
   return data.map(
     ({
       id,

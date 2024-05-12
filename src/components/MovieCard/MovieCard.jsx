@@ -6,10 +6,10 @@ import { Link, useLocation } from "react-router-dom";
 const MovieCard = ({ item }) => {
   const location = useLocation();
   return (
-    <li className={s.card}>
+    <li className={s.card} title={item.title}>
       <Link to={`/movies/${item.id}`} state={location}>
         <div className={s.img_wrap}>
-          <img src={item.poster} alt="" />
+          <img src={item.poster} alt={item.title} />
         </div>
         <div className={s.desc}>
           <p> {item.title}</p>

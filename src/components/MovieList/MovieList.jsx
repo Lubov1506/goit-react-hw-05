@@ -1,7 +1,6 @@
 import MovieCard from "components/MovieCard/MovieCard";
-import s from './MoviesList.module.css'
-const MoviesList = ({ movies }) => {
-  console.log(movies);
+import s from "./MovieList.module.css";
+const MovieList = ({ movies }) => {
   return (
     <ul className={s.list}>
       {movies?.map((item) => {
@@ -11,4 +10,4 @@ const MoviesList = ({ movies }) => {
   );
 };
 
-export default MoviesList;
+export default MovieList;

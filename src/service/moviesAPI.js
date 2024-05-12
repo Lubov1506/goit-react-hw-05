@@ -1,4 +1,6 @@
 import axios from "axios";
+import { createImgURL } from "helpers/createImgURL";
+import { transformCastData } from "helpers/transformCastData";
 import { transformMoviesData } from "helpers/transformMoviesData";
 
 const instance = axios.create({
@@ -13,7 +15,6 @@ export const fetchMovies = async () => {
 };
 export const fetchMovieById = async (movieId) => {
   const { data } = await instance.get(`movie/${movieId}`);
-  console.log(data);
   return transformMoviesData([data])[0];
 };
 export const fetchMovieByQuery = async (query) => {
@@ -22,6 +23,9 @@ export const fetchMovieByQuery = async (query) => {
       query,
     },
   });
-  console.log(data);
   return transformMoviesData(data.results);
+};
+export const fetchMovieCast = async (movieId) => {
+  const { data } = await instance.get(`movie/${movieId}/credits`);
+  return transformCastData(data.cast);
 };
