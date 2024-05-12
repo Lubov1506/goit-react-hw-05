@@ -1,5 +1,4 @@
 import axios from "axios";
-import { createImgURL } from "helpers/createImgURL";
 import { transformCastData } from "helpers/transformCastData";
 import { transformMoviesData } from "helpers/transformMoviesData";
 

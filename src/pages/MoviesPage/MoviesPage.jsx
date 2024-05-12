@@ -33,7 +33,6 @@ const MoviesPage = () => {
     setSearchParams("");
     reset();
   };
-  if (!searchMovies) return <Loader />;
   return (
     <>
       <Container>
@@ -56,9 +55,11 @@ const MoviesPage = () => {
 
           <Toaster />
 
-          {loading && <Loader />}
           {!!searchMovies?.length && <MoviesList movies={searchMovies} />}
-          {query.length > 0 && !loading && !searchMovies?.length && <EmptyData />}
+          {query.length > 0 && !loading && !searchMovies?.length && (
+            <EmptyData />
+          )}
+          {loading && <Loader />}
         </div>
       </Container>
     </>
