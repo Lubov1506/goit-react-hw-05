@@ -46,7 +46,7 @@ const MoviesPage = () => {
               name="searchStr"
             />
             <Button type="submit">Search</Button>
-            {searchMovies && (
+            {!!query.length && (
               <Button type="button" onClick={handleReset}>
                 Reset
               </Button>
