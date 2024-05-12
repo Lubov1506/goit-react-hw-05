@@ -57,7 +57,7 @@ const MoviesPage = () => {
 
           {loading && <Loader />}
           {!!searchMovies?.length && <MoviesList movies={searchMovies} />}
-          {query.length > 0 && !searchMovies?.length && <EmptyData />}
+          {query.length > 0 && !loading && !searchMovies?.length && <EmptyData />}
         </div>
       </Container>
     </>

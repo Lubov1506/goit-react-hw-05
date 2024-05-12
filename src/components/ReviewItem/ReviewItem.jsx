@@ -7,18 +7,20 @@ import { createImgURL } from "helpers/createImgURL";
 const Modal = lazy(() => import("../Modal/Modal"));
 
 const ReviewItem = ({ item }) => {
-  console.log(item);
   const [isOpen, setIsOpen] = useState(false);
   const closeModal = () => setIsOpen(false);
   const openModal = () => setIsOpen(true);
-
 
   return (
     <>
       <li className={s.li_review} onClick={openModal}>
         <div>
           <h3>{item.author}</h3>
-  <img className={s.icon} src={createImgURL(item.author_details.avatar_path, 'person')} alt={item.name} />
+          <img
+            className={s.icon}
+            src={createImgURL(item.author_details.avatar_path, "person")}
+            alt={item.name}
+          />
         </div>
         <p>{textCut(item.content)}</p>
         <div className={s.date}> {format(item.created_at, "PPPP")}</div>
