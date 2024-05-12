@@ -10,12 +10,16 @@ import Loader from "components/Loader/Loader";
 import toast, { Toaster } from "react-hot-toast";
 import { FaFeatherPointed } from "react-icons/fa6";
 import EmptyData from "components/EmptyData/EmptyData";
+import { useForm } from "react-hook-form";
 
 const MoviesPage = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const query = searchParams.get("query") ?? "";
-  const [searchMovies, setSearchMovies] = useHttp(fetchMovieByQuery, query);
-  const handleSubmit = (values) => {
+  const [searchMovies, _, loading] = useHttp(fetchMovieByQuery, query);
+
+  const { register, handleSubmit, reset } = useForm();
+
+  const onSubmit = (values) => {
     if (!values.searchStr.length) {
       toast.success("Будь ласка, введіть назву фільму", {
         position: "top-center",
@@ -27,33 +31,38 @@ const MoviesPage = () => {
     setSearchParams({ query: values.searchStr, page: 1 });
   };
   const handleReset = () => {
-    searchParams.set("query", "");
-    setSearchMovies([]);
+    setSearchParams("");
+    reset();
   };
   if (!searchMovies) return <Loader />;
-
+  console.log(query);
   return (
     <>
       <Container>
-        <Formik initialValues={{ searchStr: query }} onSubmit={handleSubmit}>
-          <Form className={s.form}>
-            <Field className={s.input} name="searchStr" />
+        <div>
+          <form className={s.form} onSubmit={handleSubmit(onSubmit)}>
+            <input
+              {...register("searchStr")}
+              className={s.input}
+               value={query}
+              name="searchStr"
+            />
             <Button type="submit">Search</Button>
             {searchMovies && (
-              <Button type="button" onClick={handleReset}>
+              <Button
+                type="button"
+                onClick={ handleReset}
+              >
                 Reset
               </Button>
             )}
-          </Form>
-        </Formik>
-        <Toaster />
+          </form>
 
-        <div>
-          {searchMovies && searchMovies.length > 0 ? (
-            <MoviesList movies={searchMovies} />
-          ) : (
-            <EmptyData />
-          )}
+          <Toaster />
+
+          {!!searchMovies?.length && <MoviesList movies={searchMovies} />}
+          {loading && <Loader />}
+          {query.length > 0 && !searchMovies?.length && <EmptyData />}
         </div>
       </Container>
     </>
