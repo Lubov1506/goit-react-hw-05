@@ -5,6 +5,17 @@
   display: flex;
   flex-direction: column;
   gap: 5px;
+  border-radius: 5px;
+  div {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+  .icon {
+    width: 25px;
+    height: 25px;
+    border-radius: 5px;
+  }
   .date {
     font-size: 14px;
     display: flex;

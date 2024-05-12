@@ -12,7 +12,6 @@ const MovieCast = () => {
     <div>
   { cast.length  ?   <ul className={s.list}>
         {cast.map((item) => {
-          console.log(item);
           return <CastList key={item.id} item={item} />;
         })}
       </ul>: <p>There is no information about the cast.</p>}

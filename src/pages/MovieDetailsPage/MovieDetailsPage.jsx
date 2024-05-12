@@ -1,6 +1,6 @@
 import MovieReviews from "components/NestedComponents/MovieReviews/MovieReviews";
 import { useHttp } from "../../hooks/useHttp";
-import { Suspense,  useRef,  } from "react";
+import { Suspense, useRef } from "react";
 import {
   Link,
   NavLink,
@@ -21,7 +21,6 @@ const MovieDetailsPage = () => {
   const goBackRef = useRef(location.state || "/movies");
   const [movie, _, loading] = useHttp(fetchMovieById, movieId);
   if (!movie) return <Loader />;
-console.log(movie);
   return (
     <div>
       <Container>
@@ -36,7 +35,9 @@ console.log(movie);
             <div className={s.descript}>
               <div>
                 <h2>{movie.title}</h2>
-              { movie.original_title && <p className={s.subtitle}>{ movie.original_title}</p>}
+                {movie.original_title && (
+                  <p className={s.subtitle}>{movie.original_title}</p>
+                )}
               </div>
               <p>{movie.overview}</p>
               <ul className={s.genres}>
@@ -49,8 +50,16 @@ console.log(movie);
                 })}
               </ul>
 
-              <p><span className={s.accent}>Country</span> { movie.production_countries.map(item=>item.name).join(', ')}.</p>
- <p><span className={s.accent}>Produced by:</span> { movie.production_companies.map(item=>item.name).join(', ')}.</p>
+              <p>
+                <span className={s.accent}>Country</span>{" "}
+                {movie.production_countries.map((item) => item.name).join(", ")}
+                .
+              </p>
+              <p>
+                <span className={s.accent}>Produced by:</span>{" "}
+                {movie.production_companies.map((item) => item.name).join(", ")}
+                .
+              </p>
             </div>
           </section>
           <section>
@@ -72,9 +81,8 @@ console.log(movie);
                 Reviews
               </NavLink>
             </nav>
-            <Suspense fallback={<Loader/>}> 
-
-            <Outlet />
+            <Suspense fallback={<Loader />}>
+              <Outlet />
             </Suspense>
           </section>
         </div>
