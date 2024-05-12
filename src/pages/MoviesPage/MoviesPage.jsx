@@ -4,7 +4,6 @@ import { useSearchParams } from "react-router-dom";
 import { fetchMovieByQuery } from "service/moviesAPI";
 import Container from "components/Container/Container";
 import s from "./MoviesPage.module.css";
-import { Field, Form, Formik } from "formik";
 import Button from "components/Button/Button";
 import Loader from "components/Loader/Loader";
 import toast, { Toaster } from "react-hot-toast";
