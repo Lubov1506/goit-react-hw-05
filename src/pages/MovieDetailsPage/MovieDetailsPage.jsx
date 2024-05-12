@@ -1,6 +1,6 @@
 import MovieReviews from "components/NestedComponents/MovieReviews/MovieReviews";
 import { useHttp } from "../../hooks/useHttp";
-import { useEffect, useRef, useState } from "react";
+import { Suspense,  useRef,  } from "react";
 import {
   Link,
   NavLink,
@@ -66,7 +66,10 @@ const MovieDetailsPage = () => {
                 Reviews
               </NavLink>
             </nav>
+            <Suspense fallback={<Loader/>}> 
+
             <Outlet />
+            </Suspense>
           </section>
         </div>
       </Container>

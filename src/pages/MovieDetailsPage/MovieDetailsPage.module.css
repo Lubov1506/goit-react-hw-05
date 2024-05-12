@@ -27,6 +27,7 @@
   .genres {
     display: flex;
     gap: 5px;
+    flex-wrap: wrap;
     li {
       background-color: grey;
       border-radius: 5px;

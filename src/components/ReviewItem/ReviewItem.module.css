@@ -1,0 +1,27 @@
+.li_review {
+  border: 1px solid grey;
+  padding: 10px;
+  min-width: 420px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  .date {
+    font-size: 14px;
+    display: flex;
+    justify-content: end;
+    color: rgba(128, 128, 128, 0.877);
+  }
+}
+.modal_desc {
+  padding: 0 20px;
+  .modal_date {
+    padding: 10px;
+    text-align: right;
+    color: rgba(128, 128, 128, 0.852);
+  }
+}
+.text {
+  max-height: 300px;
+  padding: 5px;
+  overflow-y: auto;
+}
