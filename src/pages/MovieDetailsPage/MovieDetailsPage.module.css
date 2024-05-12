@@ -8,6 +8,9 @@
 .main_info {
   display: flex;
   gap: 20px;
+  .subtitle {
+    color: rgba(0, 0, 0, 0.648);
+  }
   .img_wrap {
     min-width: 250px;
     width: 280px;
@@ -36,6 +39,9 @@
       font-weight: bold;
       text-transform: lowercase;
     }
+  }
+  .accent {
+    font-weight: bold;
   }
 }
 .nav_list {

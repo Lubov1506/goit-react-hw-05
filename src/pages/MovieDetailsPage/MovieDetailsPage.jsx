@@ -21,7 +21,7 @@ const MovieDetailsPage = () => {
   const goBackRef = useRef(location.state || "/movies");
   const [movie, _, loading] = useHttp(fetchMovieById, movieId);
   if (!movie) return <Loader />;
-
+console.log(movie);
   return (
     <div>
       <Container>
@@ -34,7 +34,10 @@ const MovieDetailsPage = () => {
               <img src={movie.poster} alt={movie.title} />
             </div>
             <div className={s.descript}>
-              <h2>{movie.title}</h2>
+              <div>
+                <h2>{movie.title}</h2>
+              { movie.original_title && <p className={s.subtitle}>{ movie.original_title}</p>}
+              </div>
               <p>{movie.overview}</p>
               <ul className={s.genres}>
                 {movie.genres.map((item) => {
@@ -45,6 +48,9 @@ const MovieDetailsPage = () => {
                   );
                 })}
               </ul>
+
+              <p><span className={s.accent}>Country</span> { movie.production_countries.map(item=>item.name).join(', ')}.</p>
+ <p><span className={s.accent}>Produced by:</span> { movie.production_companies.map(item=>item.name).join(', ')}.</p>
             </div>
           </section>
           <section>

@@ -10,12 +10,12 @@ const MovieCast = () => {
   if (!cast) return <Loader/>;
   return (
     <div>
-      <ul className={s.list}>
+  { cast.length  ?   <ul className={s.list}>
         {cast.map((item) => {
           console.log(item);
           return <CastList key={item.id} item={item} />;
         })}
-      </ul>
+      </ul>: <p>There is no information about the cast.</p>}
     </div>
   );
 };

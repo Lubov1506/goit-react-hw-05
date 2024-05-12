@@ -1,17 +1,20 @@
 import { BallTriangle } from "react-loader-spinner";
-
+import s from './Loader.module.css'
 const Loader = () => {
   return (
-    <BallTriangle
-      height={100}
-      width={100}
-      radius={5}
-      color="#4fa94d"
-      ariaLabel="ball-triangle-loading"
-      wrapperStyle={{}}
-      wrapperClass=""
-      visible={true}
-    />
+    <div className={s.load}>
+   
+      <BallTriangle
+        height={100}
+        width={100}
+        radius={5}
+        color="#4fa94d"
+        ariaLabel="ball-triangle-loading"
+        wrapperStyle={{}}
+        wrapperClass=""
+        visible={true}
+      />
+    </div>
   );
 };
 

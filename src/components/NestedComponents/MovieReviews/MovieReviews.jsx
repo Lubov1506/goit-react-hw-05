@@ -13,13 +13,13 @@ const MovieReviews = () => {
 
   return (
     <div>
-      {reviews && (
+      {reviews.length ? (
         <ul className={s.list_rev}>
           {reviews.map((item) => {
             return <ReviewItem key={item.id} item={item} />;
           })}
         </ul>
-      )}
+      ) : <p>There are no reviews yet</p>}
     </div>
   );
 };
