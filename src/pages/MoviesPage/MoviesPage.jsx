@@ -44,6 +44,7 @@ const MoviesPage = () => {
               className={s.input}
               defaultValue={query}
               name="searchStr"
+              placeholder="Введіть назву фільму..."
             />
             <Button type="submit">Search</Button>
             {!!query.length && (
