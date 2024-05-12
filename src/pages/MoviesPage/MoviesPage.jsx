@@ -13,7 +13,7 @@ import EmptyData from "components/EmptyData/EmptyData";
 
 const MoviesPage = () => {
   const [searchParams, setSearchParams] = useSearchParams();
-  let query = searchParams.get("query") ?? "";
+  const query = searchParams.get("query") ?? "";
   const [searchMovies, setSearchMovies] = useHttp(fetchMovieByQuery, query);
   const handleSubmit = (values) => {
     if (!values.searchStr.length) {
