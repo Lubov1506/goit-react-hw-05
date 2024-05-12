@@ -34,7 +34,6 @@ const MoviesPage = () => {
     reset();
   };
   if (!searchMovies) return <Loader />;
-  console.log(query);
   return (
     <>
       <Container>
@@ -43,15 +42,12 @@ const MoviesPage = () => {
             <input
               {...register("searchStr")}
               className={s.input}
-               value={query}
+              defaultValue={query}
               name="searchStr"
             />
             <Button type="submit">Search</Button>
             {searchMovies && (
-              <Button
-                type="button"
-                onClick={ handleReset}
-              >
+              <Button type="button" onClick={handleReset}>
                 Reset
               </Button>
             )}
@@ -59,8 +55,8 @@ const MoviesPage = () => {
 
           <Toaster />
 
-          {!!searchMovies?.length && <MoviesList movies={searchMovies} />}
           {loading && <Loader />}
+          {!!searchMovies?.length && <MoviesList movies={searchMovies} />}
           {query.length > 0 && !searchMovies?.length && <EmptyData />}
         </div>
       </Container>
